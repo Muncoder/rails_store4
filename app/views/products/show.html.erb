@@ -1,0 +1,12 @@
+<div class="container">
+	<h1><%= @product.name %></h1>
+	<hr>
+	<div class="well">
+		<%= @product.description %>
+	</div>
+	<hr>
+	<p>Price : <h2><%= @product.price %></h2></p>
+	<hr>
+
+	<%= link_to "All Products", products_path, class: "btn btn-success" %>
+</div>

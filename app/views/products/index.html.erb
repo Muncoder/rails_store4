@@ -1,0 +1,33 @@
+<div class="container">
+	<h1>All Products</h1>	
+	<hr>
+
+	<% @products.each_slice(3) do |products| %>
+		
+		<div class="row">
+			<% products.each do |product| %>
+				<div class="col-md-4">
+					<div class="well">
+						<h2><%= product.name %></h2>
+						<p><%= product.description %></p>
+						<hr>
+						<h3><%= product.price %></h3>
+						<br>
+						<div>
+							<%= link_to "Show", product_path(product), class: "btn btn-xs btn-default" %>
+							<%= link_to "Edit", edit_product_path(product), class: "btn btn-xs btn-default" %>
+							<%= link_to "Delete", product_path(product), method: :delete, data: {confirm: "Sure to Delete?"}, class: "btn btn-xs btn-default" %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+
+	<% end %>
+
+	<hr>
+
+
+	<%= link_to "New Product", new_product_path, class: "btn btn-info" %>
+
+</div>
