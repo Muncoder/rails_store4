@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
 
   before_action :find_product, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!,only: [:new, :create, :edit, :update, :destroy]
+  before_filter :initialize_cart
 
   def index
     @products = Product.all.order("created_at DESC")

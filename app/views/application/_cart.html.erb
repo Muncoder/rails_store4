@@ -1,0 +1,10 @@
+<% if @cart %>
+	<% if @cart.empty? %>
+		Your cart is empty	
+	<% else %>
+		<%= link_to "You have #{ pluralize @cart.count, 'item' } in the cart", carts_path %>
+		|
+		<%= link_to "clear Cart", clear_carts_path %>
+	<% end %>
+
+<% end %>
