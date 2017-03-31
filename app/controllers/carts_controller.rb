@@ -30,6 +30,10 @@ class CartsController < ApplicationController
 		session["cart"] = @cart.serialize
 		redirect_to :back, notice: "Quantity removed."
 	end
+
+	def checkout
+		@order_form = OrderForm.new user: User.new
+	end
 	
 
 end

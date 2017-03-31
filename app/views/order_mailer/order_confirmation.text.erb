@@ -1,0 +1,7 @@
+Hello <%= @order.user.full_name %>,
+
+<% @order.order_items.each do |item| %>
+	<%= item.quantity.to_i %> <%= item.product.name %> (<%= number_to_currency item.total_price.to_i %>)
+<% end %>
+
+Total <%= number_to_currency @order.total_price.to_i %>

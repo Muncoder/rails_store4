@@ -1,0 +1,66 @@
+<h1>Checkout page</h1>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<table class="table table-bordered table-stripe">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th>Quantity</th>
+						<th>Price</th>
+						<th>Total Price</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @cart.items.each do |cart| %>
+						<tr>
+							<td><%= cart.product.id %></td>
+							<td><%= cart.product.name %></td>
+							<td><%= cart.quantity %></td>
+							<td><%= cart.product.price %></td>
+							<td><%= cart.total_price %></td>
+						</tr>
+					<% end %>
+
+					<tr>
+						<td colspan="4">Total Price</td>
+						<td><%= @cart.total_price %></td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<h3>Your personal details - </h3>
+			<%= form_for @order_form, url: orders_path do |f| %>
+				
+				<%= render "orders/errors" %>
+				
+				<%= f.fields_for :user, f.object.user do |u| %>
+
+					<div class="form-group">
+						<%= u.text_field :first_name, placeholder: "First Name", class: "form-control" %>
+						<%= u.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
+						<%= u.text_field :email, placeholder: "Email", class: "form-control" %>
+					</div>
+
+					<span class="help-block">
+						This will help you track your order more effectively
+					</span>
+
+					<div class="form-group">
+						<%= u.text_field :address, placeholder: "Address", class: "form-control" %>
+						<%= u.text_field :postal_code, placeholder: "Postal Code", class: "form-control" %>
+						<%= u.text_field :city, placeholder: "City", class: "form-control" %>
+						<%= u.country_select :country, { priority_countries: ["GB", "US", "ES", "PT"] }, { class: "form-control" } %>
+					</div>
+
+				<% end %>
+
+				<%= f.submit "Place order", class: "btn btn-primary" %>
+
+			<% end %>
+
+		</div>
+	</div>
+</div>

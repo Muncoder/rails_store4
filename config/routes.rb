@@ -12,5 +12,10 @@ Rails.application.routes.draw do
 		delete 'del', path: 'del/:id'
 		post 'add_quantity', path: 'addquantity/:id'
 		post 'remove_quantity', path: 'removequantity/:id'
+
+		get :checkout
 	end
+
+	resources :orders, only: [ :index, :show, :create ]
+	
 end
