@@ -29,6 +29,8 @@ gem 'paperclip'
 
 gem 'country_select', '~> 3.0'
 
+gem "braintree"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

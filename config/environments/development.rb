@@ -51,4 +51,9 @@ Rails.application.configure do
     authentication: 'login'
   }
 
+  Braintree::Configuration.environment = :sandbox
+  Braintree::Configuration.merchant_id = "3xycbzpp3kpd5zpg"
+  Braintree::Configuration.public_key = "ywqv7ttpdgng24k6"
+  Braintree::Configuration.private_key = "45b85824084be0fb07259de9566ff161"
+
 end
